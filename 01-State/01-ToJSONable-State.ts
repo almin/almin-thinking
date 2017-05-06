@@ -146,7 +146,7 @@ class ExtendState extends State<MyStateProps> implements MyStateProps {
 
 // Pass MyState
 testYourStore(MyState);
-// Fail BadState
+// Pass Some extension State
 testYourStore(ExtendState);
 
 function testYourStore(StoreConstructor: new (..._: Array<any>) => MyState | ExtendState) {
