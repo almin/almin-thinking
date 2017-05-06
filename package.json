@@ -1,0 +1,45 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "name": "almin-thinking",
+  "version": "1.0.0",
+  "description": "Docs/Concept/Experimental Design for Almin.",
+  "main": "lib/almin-thinking.js",
+  "scripts": {
+    "test": "mocha 01-State/",
+    "build": "cross-env NODE_ENV=production tsc -p .",
+    "watch": "tsc -p . --watch",
+    "prepublish": "npm run --if-present build"
+  },
+  "keywords": [
+    "almin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/almin/almin-thinking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/almin/almin-thinking/issues"
+  },
+  "homepage": "https://github.com/almin/almin-thinking",
+  "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.18",
+    "cross-env": "^4.0.0",
+    "espower-typescript": "^8.0.0",
+    "mocha": "^3.3.0",
+    "power-assert": "^1.4.2",
+    "typescript": "^2.3.2"
+  },
+  "dependencies": {
+    "almin": "^0.12.2"
+  }
+}
