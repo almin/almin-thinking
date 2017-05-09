@@ -8,6 +8,11 @@
 
 - [01-State/01-ToJSONable-State.ts](./01-State/01-ToJSONable-State.ts)
 
+### UseCase
+
+- [01-Revealing-Constructor-Pattern-UseCase.ts](./02-UseCase/01-Revealing-Constructor-Pattern-UseCase.ts)
+- [02-Fluent-UseCase.ts](./02-UseCase/02-Fluent-UseCase.ts)
+
 ## Inspired
 
 - [reactjs/react-future: Specs & docs for potential future and experimental React APIs and JavaScript syntax.](https://github.com/reactjs/react-future "reactjs/react-future: Specs &amp; docs for potential future and experimental React APIs and JavaScript syntax.")
