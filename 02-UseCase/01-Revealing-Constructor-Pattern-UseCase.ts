@@ -40,7 +40,10 @@ const proxify = <T extends UseCase>(useCase: T, resolve: Function, reject: Funct
         }
     } as T;
 };
-
+/**
+ * Revealing Constructor Pattern
+ * Reference: https://blog.domenic.me/the-revealing-constructor-pattern/
+ */
 new UseCaseExecutor(new MyUseCase(), (useCase) => useCase.execute('arg', 'arg2')).then(value => {
     console.log(value);
 });

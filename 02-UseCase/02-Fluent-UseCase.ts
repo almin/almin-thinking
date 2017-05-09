@@ -44,6 +44,7 @@ const proxify = <T extends UseCase>(useCase: T, resolve: Function, reject: Funct
  *
  * - type safe UseCase
  * - hook
+ *
  */
 new UseCaseExecutor(new MyUseCase())
     .executor(useCase => useCase.execute("test"))
