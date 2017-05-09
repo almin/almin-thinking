@@ -1,5 +1,6 @@
 import { Payload } from "almin";
 import * as assert from "assert";
+import { MyDomain } from "./domain/MyDomain";
 // This is concept model of State
 // Simple principle:
 interface StatePrinciple<T> {
@@ -36,14 +37,6 @@ abstract class State<T> {
 }
 
 // Implement State sub class
-// domain
-class MyDomain {
-    value: string;
-
-    constructor(value: string) {
-        this.value = value;
-    }
-}
 
 interface MyStateProps {
     value: string;
