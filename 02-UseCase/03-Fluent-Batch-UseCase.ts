@@ -1,12 +1,14 @@
 import { UseCase, Context, Dispatcher, Store } from "almin";
 class MyUseCase extends UseCase {
     execute(n: number) {
+        console.info("MyUseCase#execute");
         return n;
     }
 }
 
 class AsyncUseCase extends UseCase {
     execute(value: string) {
+        console.info("AsyncUseCase#execute");
         return Promise.resolve(value);
     }
 }
@@ -23,9 +25,10 @@ class UseCaseExecutorCollection<U1 extends UseCase, U2 extends UseCase> {
                 return proxify(useCase, (result) => queue.push(result), reject);
             });
             executor(...proxyUseCases);
+            console.info("[LOG] DID");
             resolve(Promise.all(queue));
         }).then((value) => {
-            console.info("[LOG] COMPLETE", value);
+            console.info("[LOG] COMPLETED: ", value);
         });
     }
 }
@@ -53,7 +56,7 @@ const proxify = <T extends UseCase>(useCase: T, resolve: Function, reject: Funct
     let isExecuted = false;
     return {
         execute(...args) {
-            console.info("[LOG]", ...args);
+            console.info("[LOG] WILL: ", ...args);
             if (isExecuted) {
                 return reject(new Error("already executed"));
             }
