@@ -31,7 +31,7 @@ const aStore = new MockStore();
 const bStore = new MockStore();
 const cStore = new MockStore();
 const dStore = new MockStore();
-// big nest StoreGroup
+// Pattern 1: big nest StoreGroup
 const storeGroup = new StoreGroup({
     pageX: new StoreGroup({
         a: aStore,
@@ -48,7 +48,7 @@ const context = new Context({
     store: storeGroup
 });
 context.getState(); // { pageX: {}, pageY: {} }
-// multiple context
+// Patter 2: multiple context
 const storeGroupPageX = new StoreGroup({
     a: aStore,
     b: bStore
@@ -65,9 +65,20 @@ const contextY = new Context({
     dispatcher: new Dispatcher,
     store: storeGroupPageY
 });
-// multiple StoreGroup and single context
+// Pattern 3: multiple StoreGroup and single context
 const context = new Context({
     dispatcher: new Dispatcher,
     stores: [storeGroupPageX, storeGroupPageY]
 });
 context.getState() ; // [{ },{ }]
+
+// # Pattern 4: multiple context and shared dispatcher
+const sharedDispatcher = new Dispatcher();
+const contextXsharedDispatcher = new Context({
+    dispatcher: sharedDispatcher,
+    store: storeGroupPageX,
+});
+const contextYsharedDispatcher = new Context({
+    dispatcher: sharedDispatcher,
+    store: storeGroupPageY
+});
