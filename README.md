@@ -17,7 +17,7 @@
 
 ### Context
 
-- [03-Context/01-multiple-context.ts](./03-Context/03-Context/01-multiple-context.ts)
+- [03-Context/01-multiple-context.ts](./03-Context/01-multiple-context.ts)
 
 
 
