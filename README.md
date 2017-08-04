@@ -7,11 +7,19 @@
 ### State
 
 - [01-State/01-ToJSONable-State.ts](./01-State/01-ToJSONable-State.ts)
+- [01-State/02-State-Update-method.ts](./01-State/02-State-Update-method.ts)
 
 ### UseCase
 
-- [01-Revealing-Constructor-Pattern-UseCase.ts](./02-UseCase/01-Revealing-Constructor-Pattern-UseCase.ts)
-- [02-Fluent-UseCase.ts](./02-UseCase/02-Fluent-UseCase.ts)
+- [x] [01-Revealing-Constructor-Pattern-UseCase.ts](./02-UseCase/01-Revealing-Constructor-Pattern-UseCase.ts)
+- [x] [02-Fluent-UseCase.ts](./02-UseCase/02-Fluent-UseCase.ts)
+    - [UseCase: Fluent style UseCase · Issue #193 · almin/almin](https://github.com/almin/almin/issues/193 "UseCase: Fluent style UseCase · Issue #193 · almin/almin")
+
+### Context
+
+- [03-Context/01-multiple-context.ts](./03-Context/03-Context/01-multiple-context.ts)
+
+
 
 ## Inspired
 
