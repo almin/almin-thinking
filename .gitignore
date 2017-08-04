@@ -83,4 +83,4 @@ crashlytics-build.properties
 
 
 /lib
-/02-UseCase/*.js
+/0*-*/*.js
