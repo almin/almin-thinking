@@ -17,6 +17,7 @@ class UseCaseExecutorCollection<U1 extends UseCase, U2 extends UseCase> {
         this.useCases = useCases;
     }
 
+    // @ts-ignore
     executor(executor: (u1: U1, u2: U2) => any);
     executor(executor: (...useCases: Array<UseCase>) => any) {
         return new Promise((resolve, reject) => {
