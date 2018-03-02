@@ -36,7 +36,7 @@ class MyUseCase3 extends UseCase {
     }
 }
 
-type r = A<MyUseCase3["execute"]>
+type r = A3<MyUseCase3["execute"]>
 
 new UseCaseExecutor(new MyUseCase())
     .execute(1)
