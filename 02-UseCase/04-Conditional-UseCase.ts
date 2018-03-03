@@ -15,7 +15,8 @@ class UseCaseExecutor<T extends UseCase> {
         this.useCase = useCase;
     }
 
-    execute<P extends A0<T["execute"]>>(): Promise<void>;
+    // `this: never` aim to throw error when no arguments with argumented required `execute`
+    execute<P extends A0<T["execute"]>, K>(this: P extends never ? never : this): Promise<void>;
     execute<P extends A1<T["execute"]>>(a1: P[0]): Promise<void>;
     execute<P extends A2<T["execute"]>>(a1: P[0], a2: P[1]): Promise<void>;
     execute<P extends A3<T["execute"]>>(a1: P[0], a2: P[1], a3: P[2]): Promise<void>;
@@ -28,7 +29,7 @@ class MyUseCaseZero extends UseCase {
     execute() {
     }
 }
-class MyUseCase extends UseCase {
+class MyUseCase1 extends UseCase {
     execute(value: string) {
         return Promise.resolve(value);
     }
@@ -44,21 +45,14 @@ class MyUseCase3 extends UseCase {
 
 type r = A3<MyUseCase3["execute"]>
 
-// Correct 
-new UseCaseExecutor(new MyUseCaseZero())
-    .execute()
-    .then(value => {
-        console.log(value);
-    });
-
 // Error: missing arguments
-new UseCaseExecutor(new MyUseCase())
+new UseCaseExecutor(new MyUseCase1())
     .execute()
     .then(value => {
         console.log(value);
     });
 // Error: mismatch type
-new UseCaseExecutor(new MyUseCase())
+new UseCaseExecutor(new MyUseCase1())
     .execute(1)
     .then(value => {
         console.log(value);
@@ -74,6 +68,34 @@ new UseCaseExecutor(new MyUseCase2())
 // Error: missing arguments
 new UseCaseExecutor(new MyUseCase3())
     .execute(1, "")
+    .then(value => {
+        console.log(value);
+    });
+
+// Correct Case
+
+// Correct 
+new UseCaseExecutor(new MyUseCaseZero())
+    .execute()
+    .then(value => {
+        console.log(value);
+    });
+new UseCaseExecutor(new MyUseCase1())
+    .execute("string")
+    .then(value => {
+        console.log(value);
+    });
+
+// Error: mismatch type
+new UseCaseExecutor(new MyUseCase2())
+    .execute(42, "string")
+    .then(value => {
+        console.log(value);
+    });
+
+// Error: missing arguments
+new UseCaseExecutor(new MyUseCase3())
+    .execute(42, "", { key: "string" })
     .then(value => {
         console.log(value);
     });
