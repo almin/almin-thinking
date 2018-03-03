@@ -15,7 +15,7 @@ class UseCaseExecutor<T extends UseCase> {
         this.useCase = useCase;
     }
 
-    execute<P extends A0<T["execute"]>>(a1: P): Promise<void>;
+    execute<P extends A0<T["execute"]>>(): Promise<void>;
     execute<P extends A1<T["execute"]>>(a1: P[0]): Promise<void>;
     execute<P extends A2<T["execute"]>>(a1: P[0], a2: P[1]): Promise<void>;
     execute<P extends A3<T["execute"]>>(a1: P[0], a2: P[1], a3: P[2]): Promise<void>;
@@ -44,24 +44,34 @@ class MyUseCase3 extends UseCase {
 
 type r = A3<MyUseCase3["execute"]>
 
+// Correct 
 new UseCaseExecutor(new MyUseCaseZero())
     .execute()
     .then(value => {
         console.log(value);
     });
 
+// Error: missing arguments
+new UseCaseExecutor(new MyUseCase())
+    .execute()
+    .then(value => {
+        console.log(value);
+    });
+// Error: mismatch type
 new UseCaseExecutor(new MyUseCase())
     .execute(1)
     .then(value => {
         console.log(value);
     });
 
+// Error: mismatch type
 new UseCaseExecutor(new MyUseCase2())
     .execute("wrong", "string")
     .then(value => {
         console.log(value);
     });
 
+// Error: missing arguments
 new UseCaseExecutor(new MyUseCase3())
     .execute(1, "")
     .then(value => {
