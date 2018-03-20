@@ -102,7 +102,8 @@ class ExtendState extends State<MyStateProps> implements MyStateProps {
 
     merge(state: Partial<MyStateProps>): ExtendState {
         return new ExtendState({
-            ...this as ExtendState,
+            // TODO: https://github.com/Microsoft/TypeScript/issues/10727
+            ...this as MyStateProps,
             ...state
         });
     }
